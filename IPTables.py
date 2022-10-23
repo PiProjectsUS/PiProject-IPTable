@@ -84,7 +84,7 @@ if __name__ == '__main__':
             if len(question[2]) > 0:
                 for p in question[2]:
                     print("Unblocking UDP Port [" + str(p) + "]")
-                    run_cmd("iptables -A INPUT -p tcp -m udp --dport " + str(p) + " -j ACCEPT")
+                    run_cmd("iptables -A INPUT -p udp -m udp --dport " + str(p) + " -j ACCEPT")
 
     run_cmd("iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT")
     run_cmd("iptables -P OUTPUT ACCEPT")
@@ -95,7 +95,7 @@ if __name__ == '__main__':
 
     if os.path.exists("/etc/rc.local") and not check_line_in_file("iptables-restore < /etc/iptables.rules", "/etc/rc.local"):
         run_cmd("head -n -1 /etc/rc.local > temp_iptables.txt")
-        run_cmd("echo 'iptables-restore < /etc/iptables.rules' >> temp_iptables.txt")
+        run_cmd("echo 'iptables-restore < /etc/iptables/rules.v4' >> temp_iptables.txt")
         run_cmd("echo 'exit 0' >> temp_iptables.txt")
         run_cmd("mv temp_iptables.txt /etc/rc.local")
         run_cmd("rm temp_iptables.txt")
