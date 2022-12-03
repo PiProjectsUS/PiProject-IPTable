@@ -1,8 +1,5 @@
 # PiProject-IPTable
 
-A simple helper for Raspberry Pi IPTables.
+A simple API for Tenda Router.
 
-Blog post: https://piprojects.us/using-iptables-firewall-rules-for-your-pi-2022/
-
-Example usage:
-python IPTables.py
+Blog post: https://piprojects.us/build-a-home-device-monitor-for-kids-devices/
